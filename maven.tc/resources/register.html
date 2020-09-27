@@ -1,0 +1,310 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+   <head>
+      <title>Select Hotel</title>
+
+      	<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+	<script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
+	
+	<link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+     	      
+	<script id="insert"></script>
+      	<script src="http://fiddle.jshell.net/js/stringify.js?16005e4ea6951acffd3584a04f87db2b5299a5f1" charset="utf-8"></script>
+      	<script>
+        	const customConsole = (w) => {
+			const pushToConsole = (payload, type) => {
+						w.parent.postMessage({
+         				console: {
+         					payload: stringify(payload),
+         					type: type
+         					}
+         
+         				}, "*")
+         
+         			}
+         w.onerror = (message, url, line, column) => {
+         
+         // the line needs to correspond with the editor panel
+         
+         // unfortunately this number needs to be altered every time this view is changed
+         
+         line = line - 70
+         
+         if (line < 0){
+         
+         pushToConsole(message, "error")
+         
+         } else {
+         
+         pushToConsole(`[${line}:${column}] ${message}`, "error")
+         
+         }
+         
+         }
+         
+         
+         
+         let console = (function(systemConsole){
+         
+         return {
+         
+         log: function(){
+         
+         let args = Array.from(arguments)
+         
+         pushToConsole(args, "log")
+         
+         systemConsole.log.apply(this, args)
+         
+         },
+         
+         info: function(){
+         
+         let args = Array.from(arguments)
+         
+         pushToConsole(args, "info")
+         
+         systemConsole.info.apply(this, args)
+         
+         },
+         
+         warn: function(){
+         
+         let args = Array.from(arguments)
+         
+         pushToConsole(args, "warn")
+         
+         systemConsole.warn.apply(this, args)
+         
+         },
+         
+         error: function(){
+         
+         let args = Array.from(arguments)
+         
+         pushToConsole(args, "error")
+         
+         systemConsole.error.apply(this, args)
+         
+         },
+         
+         system: function(arg){
+         
+         pushToConsole(arg, "system")
+         
+         },
+         
+         clear: function(arg){
+         
+         systemConsole.clear.apply(this, args)
+         
+         },
+         
+         time: function(arg){
+         
+         systemConsole.time.apply(this, args)
+         
+         },
+         
+         assert: function(arg){
+         
+         systemConsole.assert.apply(this, args)
+         
+         },
+         
+         dir: function(arg){
+         
+         systemConsole.dir.apply(this, args)
+         
+         }
+         
+         }
+         
+         }(window.console))
+         
+         
+         
+         window.console = console
+         
+         
+         
+         console.system("Running fiddle")
+         
+         }
+         
+         
+         
+         if (window.parent){
+         
+         customConsole(window)
+         
+         }
+         
+      </script>
+   </head>
+   
+<body class="bg-light">
+	<div class="container">
+		<div class="py-5 text-center">
+			<h1>Treenama Hotel Groups</h1>
+		</div>
+
+	<h3>Select Hotel</h3>
+      	<select name="one" id="one">
+         	<option value="0">Select Hotel</option>
+         	<option value="3000">Nirvana</option>
+         	<option value="6000">Laguna</option>
+         	<option value="9000">Palm beach</option>
+		<option value="12000">Luxe Treo Villa</option>
+      	</select>
+      <br />
+      <br />
+      <select name="two" id="two">
+         <option>Room Type</option>
+      </select>
+      <br/>
+      <br/>
+      <p>
+         <input type="checkbox" name="tri" id="tri" value="50"/>
+         <label >additional Price</label>
+      </p>
+      <div id="total"></div>
+</div>
+      
+<script type="text/javascript">//<![CDATA[
+         // arrays instead of comma separated list and added base key
+         
+         var data = {
+		"0": ["Select Room type"],
+        	"3000": ["economist_0", "executive_465", "businesse_984"], 
+        	"6000": ["economist_200", "executive_700", "businesse_800"], 
+        	"9000": ["economist_400", "executive_800", "businesse_900"],
+		"12000": ["economist_600", "executive_900", "businesse_1000", "luxury_1430"] 
+         }
+         
+         
+         
+         $("#one").change(function () {
+         
+         var first = $(this),
+         
+         second = $("#two"),
+         
+         third = $("#tri"),
+         
+         key = first.val(),
+         
+         // instead of the original switch code
+         
+         vals = data[key] == undefined ? data.base : data[key],
+         
+         html = [];
+         
+         // create insert html before adding
+         
+         $.each(vals, function (i, val) {
+         
+         var v = val.split('_');
+         
+         html.push('<option value="' + v[1] + '">' + v[0] + '</option>')
+         
+         });
+         
+         // no need to empty the element before adding the new content
+         
+         second.html(html.join());
+         
+         });
+         
+         
+         
+         $("#one,#two,#tri").change(function () {
+         
+         
+         
+         var val1 = parseInt($('#one').val()) || 0,
+         
+         val2 = parseInt($('#two').val()) || 0,
+         
+         val3 = parseInt($('#tri').val()) || 0;
+         
+         
+         
+         if($('#tri').is(':checked'))
+         
+         val3 = parseInt($('#tri').val());
+         
+         else
+         
+         val3 = 0;
+         
+         console.log(val1);
+         
+         console.log(val2);
+         
+         console.log(val3);
+         
+         $('#total').text(val1 + val2 + val3)
+         
+         })
+         
+         
+         
+         
+         
+         //]]>
+      </script>
+      <script>
+         // tell the embed parent frame the height of the content
+         
+         if (window.parent && window.parent.parent){
+         
+         window.parent.parent.postMessage(["resultsFrame", {
+         
+         height: document.body.getBoundingClientRect().height,
+         
+         slug: "16wws4w1"
+         
+         }], "*")
+         
+         }
+         
+         
+         
+         // always overwrite window.name, in case users try to set it manually
+         
+         window.name = "result"
+         
+      </script>
+      <script>
+         let allLines = []
+         
+         
+         
+         window.addEventListener("message", (message) => {
+         
+         if (message.data.console){
+         
+         let insert = document.querySelector("#insert")
+         
+         allLines.push(message.data.console.payload)
+         
+         insert.innerHTML = allLines.join(";\r")
+         
+         
+         
+         let result = eval.call(null, message.data.console.payload)
+         
+         if (result !== undefined){
+         
+         console.log(result)
+         
+         }
+         
+         }
+         
+         })
+         
+      </script>
+   </body>
+</html>

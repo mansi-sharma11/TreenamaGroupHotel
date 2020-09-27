@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
+    <classes>
+      <class name="TestCases.SanityTestcases">
+        <methods>
+          <include name="CheckLabels"/>
+          <include name="beforeTest"/>
+          <include name="aftermethod"/>
+          <include name="matchRoomDropdown"/>
+          <include name="beforesuite"/>
+          <include name="checkTotalLabel"/>
+          <include name="matchRoomnos"/>
+          <include name="verifyHotelDropdown"/>
+          <include name="checkbox"/>
+          <include name="verifyAccomodationLabel"/>
+          <include name="beforMethod"/>
+        </methods>
+      </class> <!-- TestCases.SanityTestcases -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
