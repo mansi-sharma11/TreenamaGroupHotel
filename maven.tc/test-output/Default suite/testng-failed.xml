@@ -3,21 +3,21 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="TestCases.SanityTestcases">
+      <class name="TestCases.SanityTest">
         <methods>
           <include name="CheckLabels"/>
-          <include name="beforeTest"/>
-          <include name="aftermethod"/>
-          <include name="matchRoomDropdown"/>
-          <include name="beforesuite"/>
-          <include name="checkTotalLabel"/>
-          <include name="matchRoomnos"/>
-          <include name="verifyHotelDropdown"/>
-          <include name="checkbox"/>
-          <include name="verifyAccomodationLabel"/>
           <include name="beforMethod"/>
+          <include name="verifyAccomodationLabel"/>
+          <include name="matchRoomnos"/>
+          <include name="aftermethod"/>
+          <include name="checkbox"/>
+          <include name="matchRoomDropdown"/>
+          <include name="afterTest"/>
+          <include name="checkTotalLabel"/>
+          <include name="beforesuite"/>
+          <include name="beforeTest"/>
         </methods>
-      </class> <!-- TestCases.SanityTestcases -->
+      </class> <!-- TestCases.SanityTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

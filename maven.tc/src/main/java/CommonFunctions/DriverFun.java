@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import com.aventstack.extentreports.Status;
 
-import TestCases.BaseTestClass;
+import TestCases.BaseTest;
 
 public class DriverFun {
 
@@ -35,7 +35,7 @@ public class DriverFun {
 
 		} catch (IOException e) {
 			System.out.println("Unable to SS!! " + e.getMessage());
-			BaseTestClass.test.log(Status.FAIL, "in exception block  " + e.getMessage());
+			BaseTest.test.log(Status.FAIL, "in exception block  " + e.getMessage());
 
 		}
 		return sspath;

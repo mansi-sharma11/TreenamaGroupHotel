@@ -43,10 +43,12 @@ public class LandingPageOR {
 	
 	@FindBy(xpath = "//div[@id='total']")
 	protected WebElement total;
+	
 	@FindBy(xpath = "//label[text()=\"total : $ \"]")
 	protected WebElement totalLabel; 
 	
-	
+	@FindBy(xpath="//select/option[text()='Nirvana']")
+	protected WebElement choice1;
 	
 
 }

@@ -99,9 +99,7 @@ public class SanityFunctions extends LandingPageOR {
 	}
 	
 	public boolean Roomno() {
-		int rooms =4
-				
-				;
+		int rooms =4;
 		Select select1 = new Select (dropdownvalues);
 		 select1.selectByValue("3000");
 		 Select select = new Select(roomDropdown);  

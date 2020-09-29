@@ -3,7 +3,7 @@ package TestCases;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class SanityTestcases extends BaseTestClass {
+public class SanityTest extends BaseTest {
 	@Test(priority = 1)
 	public void verifyHeading() {
 		classtest = report.createTest("Checking Heading");

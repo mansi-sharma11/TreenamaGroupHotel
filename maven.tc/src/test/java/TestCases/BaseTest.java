@@ -24,7 +24,8 @@ import CommonFunctions.DriverFun;
 import PageFunctions.OtherFunctions;
 import PageFunctions.SanityFunctions;
 
-public class BaseTestClass {
+
+public class BaseTest {
 
 	public static Driver d;
 	public ExtentReports report;
@@ -58,7 +59,6 @@ public class BaseTestClass {
 		d.startDriver(browser);
 		landingpage = new SanityFunctions(d.getDriver());
 		otherfunction = new OtherFunctions(d.getDriver());
-
 		classtest = report.createTest(getClass().getName());
 		classtest.log(Status.INFO, "inside the before test method");
 	}
@@ -73,8 +73,9 @@ public class BaseTestClass {
 		String pa = DriverFun.captureScreenshot(d.getDriver());
 		if (result.getStatus() == ITestResult.SUCCESS) {
 			classtest.info("Info");
-			classtest.pass(result.getThrowable().getMessage(),
-					MediaEntityBuilder.createScreenCaptureFromPath(pa).build());
+			/*test.log(Status.PASS, result.getMethod().getMethodName() + "has passed");
+			classtest.info(result.getThrowable().getMessage(),
+					MediaEntityBuilder.createScreenCaptureFromPath(pa).build());*/
 			
 		} 
 		else if (result.getStatus() == ITestResult.FAILURE) {

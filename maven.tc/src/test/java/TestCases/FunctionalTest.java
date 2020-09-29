@@ -3,7 +3,7 @@ package TestCases;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class OtherTestCases extends BaseTestClass {
+public class FunctionalTest extends BaseTest {
 
 	@Test(priority = 1)
 	public void whenNoHotel() throws InterruptedException {
